@@ -4,7 +4,7 @@
         <title>View Employee Details</title>
     </head>
     <body>
-        <h1>Edit Employee</h1>
+        <h1>View Employee</h1>
             <a href="/Home" class="btn link-button">Back</a>
         <div class="container">
                 @foreach($details as $data)
