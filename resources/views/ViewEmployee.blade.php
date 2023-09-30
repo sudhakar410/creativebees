@@ -5,8 +5,9 @@
     </head>
     <body>
         <h1>View Employee</h1>
-            <a href="/Home" class="btn link-button">Back</a>
         <div class="container">
+                        <a href="/Home" class="btn link-button">Back</a><br>
+
                 @foreach($details as $data)
                 <label>Employee id: <input type="text" name="employee_id" value="{{$data->employee_id}}" readonly></label><br>
                 <label>First Name: <input type="text" name="firstname" placeholder="First Name"  value="{{$data->firstname}}" readonly> </label><br>
