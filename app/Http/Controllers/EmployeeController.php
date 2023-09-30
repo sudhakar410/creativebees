@@ -14,7 +14,7 @@ class EmployeeController extends Controller
 {
     public function list_emp()
     {
-        $details['data'] = Employee::select('*')->get();
+        $details['data'] = Employee::select('*')->orderBy('id', 'desc')->get();
         return view('ListEmployees',$details);
     }
    public function add_emp()
