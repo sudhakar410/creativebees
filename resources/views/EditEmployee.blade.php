@@ -6,6 +6,7 @@
     <style>
         .error{
             color: red;
+            font-size: 12px;
         }
     </style>
     <body>
@@ -46,11 +47,11 @@
                 @if($data->photo)
                 <img src="{{ asset('storage/employee_photos/'.$data->photo ) }}" alt="Employee Photo" width="100"><br>
                 @endif
-				<label>Resume: <input type="file" name="resume" placeholder="Resume" value="{{$data->resume}}" accept=".pdf"> </label><br>
+				<br><label>Resume: <input type="file" name="resume" placeholder="Resume" value="{{$data->resume}}" accept=".pdf"> </label><br>
                 @if ($data->resume)
                     <a href="{{ asset('storage/employee_pdfs/' . $data->resume) }}" target="_blank">View PDF</a>
                 @endif
-                <label><input type="hidden" name="_token" value="<?=csrf_token()?>">
+                <label><input type="hidden" name="_token" value="<?=csrf_token()?>"><br>
                 <input type="submit" value="Update">
                     @endforeach
             </form>

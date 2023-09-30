@@ -76,7 +76,8 @@ class EmployeeController extends Controller
 
 
 		
-		$lastEmployee = Employee::latest()->first();
+		//$lastEmployee = Employee::latest()->first();
+        $lastEmployee = Employee::select('*')->orderBy('id', 'desc')->first();
 
 		// Check if a record was found
 		if ($lastEmployee) {
@@ -92,9 +93,9 @@ class EmployeeController extends Controller
 		
 
         if ($employee->save()) {
-            return redirect('/home')->with('success', 'Employee added successfully.');
+            return redirect('/Home')->with('success', 'Employee added successfully.');
         } else {
-            return redirect('/home')->with('error', 'Failed to add employee.');
+            return redirect('/Home')->with('error', 'Failed to add employee.');
         }
    }
    
@@ -112,7 +113,9 @@ class EmployeeController extends Controller
 		
 
          // Find the last employee record
-        $lastEmployee = Employee::latest('id')->first();
+       // $lastEmployee = Employee::latest('id')->first();
+        $lastEmployee = Employee::select('*')->orderBy('id', 'desc')->first();
+
 
         // Get the last ID or start from 1 if there's no record
         $lastId = $lastEmployee ? $lastEmployee->id : 0;
@@ -262,15 +265,16 @@ class EmployeeController extends Controller
 
     $delete = Employee::where('employee_id',$e_id)->first();
 
+
     if(!$delete)
     {
         return 'No Data Found';
     }
 
     if ($delete->delete()) {
-            return redirect('/home')->with('success', 'Employee deleted successfully.');
+            return redirect('/Home')->with('success', 'Employee deleted successfully.');
         } else {
-            return redirect('/home')->with('error', 'Failed to delete employee.');
+            return redirect('/Home')->with('error', 'Failed to delete employee.');
         }
    }
    public function downloadCsvTemplate()
